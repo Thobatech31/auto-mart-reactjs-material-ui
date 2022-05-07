@@ -75,12 +75,14 @@ const Navbar = () => {
                 <Left>
                     <Logo>Auto Mart</Logo>
                 </Left>
+
                 <Center>
                     <MenuItem>HOME</MenuItem>
                     <MenuItem>ABOUT US</MenuItem>
                     <MenuItem>CONTACT</MenuItem>
                     <MenuItem>SERVICE</MenuItem>
                 </Center>
+
                 <Right>
                     <MenuItem>REGISTER</MenuItem>
                     <MenuItem>SIGN IN</MenuItem>
