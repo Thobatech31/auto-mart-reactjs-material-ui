@@ -120,7 +120,7 @@ const Car = () => {
             <Navbar />
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://i.ibb.co/S6qMxwr/jean.jpg" />
+                    <Image src="https://cdn.sportscardigest.com/wp-content/uploads/20210507042937/GR-Supra-1-1.jpg" />
                 </ImgContainer>
                 <InfoContainer>
                     <Title>Denim Jumpsuit</Title>
