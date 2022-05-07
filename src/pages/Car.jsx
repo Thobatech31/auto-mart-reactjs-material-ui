@@ -139,23 +139,9 @@ const Car = () => {
                             <FilterColor color="darkblue" />
                             <FilterColor color="gray" />
                         </Filter>
-                        <Filter>
-                            <FilterTitle>Size</FilterTitle>
-                            <FilterSize>
-                                <FilterSizeOption>XS</FilterSizeOption>
-                                <FilterSizeOption>S</FilterSizeOption>
-                                <FilterSizeOption>M</FilterSizeOption>
-                                <FilterSizeOption>L</FilterSizeOption>
-                                <FilterSizeOption>XL</FilterSizeOption>
-                            </FilterSize>
-                        </Filter>
+
                     </FilterContainer>
                     <AddContainer>
-                        <AmountContainer>
-                            <Remove />
-                            <Amount>1</Amount>
-                            <Add />
-                        </AmountContainer>
                         <Button>ADD TO CART</Button>
                     </AddContainer>
                 </InfoContainer>
