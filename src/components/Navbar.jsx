@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import {Link} from "react-router-dom";
+
 
 const Container = styled.div`
   height: 60px;
@@ -49,8 +51,12 @@ const Center = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
+  color: black;
   ${mobile({ fontSize: "24px" })}
 `;
+
+
+
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -66,12 +72,42 @@ const MenuItem = styled.div`
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 
+const Button = styled.button`
+  padding: 10px 20px;
+  border: 1px solid blue;
+  background-color: white;
+  border-radius:5px;
+  cursor: pointer;
+  font-weight: 500;
+  margin-right:5px;
+
+  &:hover{
+      background-color: #f8f4f4;
+  }
+`;
+const Button2 = styled.button`
+  padding: 10px 25px;
+  border: 1px solid white;
+  background-color: teal;
+  border-radius:5px;
+  cursor: pointer;
+  font-weight: 500;
+  color:white;
+
+  &:hover{
+      background-color: teal;
+  }
+`;
+
+
 const Navbar = () => {
     return (
         <Container>
             <Wrapper>
                 <Left>
-                    <Logo>Auto Mart</Logo>
+
+                        <Logo>Auto Mart</Logo>
+
                 </Left>
 
                 <Center>
@@ -82,8 +118,12 @@ const Navbar = () => {
                 </Center>
 
                 <Right>
-                    <MenuItem>REGISTER</MenuItem>
-                    <MenuItem>SIGN IN</MenuItem>
+                    <Link to={"/register"}>
+                        <Button>REGISTER</Button>
+                    </Link>
+                    <Link to={"/login"}>
+                        <Button2>Login</Button2>
+                    </Link>
                 </Right>
             </Wrapper>
         </Container>
