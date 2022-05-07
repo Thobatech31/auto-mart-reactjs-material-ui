@@ -1,10 +1,15 @@
-
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
+import Home from "./pages/Home";
 
 const App = () => {
-  return(
-      <h1>Auto Mart is an online marketplace for automobiles, with Auto Mart users posting
-          their cars for sale.</h1>
-  )
+    return(
+        <Router>
+            <Routes>
+                <Route exact path="/" element={<Home/>} />
+            </Routes>
+        </Router>
+    )
 };
 
 export default App;
