@@ -126,8 +126,6 @@ const Car = () => {
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
                             <FilterColor color="black" />
-                            <FilterColor color="darkblue" />
-                            <FilterColor color="gray" />
                         </Filter>
 
                     </FilterContainer>
