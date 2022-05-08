@@ -1,6 +1,12 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import Spinner from '../components/Loading'
 import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {registerFunc} from "../redux/apiCalls";
+import {Link} from "react-router-dom";
+
 
 const Container = styled.div`
   width: 100vw;
@@ -55,6 +61,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
 const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -64,6 +71,22 @@ const Register = () => {
     const [address, setAddress] = useState("");
     const [password, setPassword] = useState("");
 
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {isFetching, error, currentUser, isSuccess} = useSelector(state=>state.user)
+
+    // useEffect(()=>{
+    //   if (isSuccess) {
+    //     navigate('/login')
+    //   }
+    // }, [isFetching])
+
+    const handleRegister = (e) =>{
+        e.preventDefault()
+        registerFunc(dispatch,{username, email, mobile, first_name, last_name, address, password})
+
+    }
     return (
         <Container>
             <Wrapper>
@@ -94,7 +117,13 @@ const Register = () => {
                         By creating an account, I consent to the processing of my personal
                         data in accordance with the <b>PRIVACY POLICY</b>
                     </Agreement>
-                    <Button>CREATE</Button>
+                    <Button onClick={handleRegister}>
+                        {isFetching ? (
+                            <Spinner/>
+                        ) : (
+                            <span>Sign Up{'  '}</span>
+                        )}
+                    </Button>
                 </Form>
             </Wrapper>
         </Container>
