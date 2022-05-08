@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import {Link} from "react-router-dom";
-
 const Container = styled.div`
   flex: 1;
   margin: 5px;
@@ -19,7 +18,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 100%;
+  height: 250px;
   object-fit: cover;
   ${mobile({ height: "20vh" })}
 
@@ -39,14 +38,21 @@ const Info = styled.div`
 
 const Title = styled.h1`
     color:white;
+    font-weight:bold;
     margin-bottom: 20px;
+`;
+
+const Desc = styled.p`
+    color:black;
+     padding: 10px;
 `;
 
 const Button = styled.button`
     border:none;
-    padding: 10px;
-    background-color: white;
-    color:gray;
+    padding: 10px 20px;
+    border-radius:5px;
+    background-color: teal;
+    color:white;
     cursor: pointer;
     font-weight: 600;
 `;
@@ -54,11 +60,12 @@ const Button = styled.button`
 const CarItem = ({ item }) => {
   return (
     <Container>
-        <Link to={`/car/${item.id}`}>
+        <Link style={{textDecoration: 'none'}} to={`/car/${item._id}`}>
           <Image src={item.img} />
+          <Desc>{item.desc.slice(0, 80)} ........</Desc>
           <Info>
             <Title>{item.title}</Title>
-            <Button>VIEW NOW</Button>
+            <Button>View Now</Button>
           </Info>
         </Link>
     </Container>
