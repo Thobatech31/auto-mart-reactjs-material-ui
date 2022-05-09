@@ -14,6 +14,11 @@ const Container = styled.div`
 
 `;
 
+const Header = styled.h1`
+    text-align:center;
+    cursor: pointer;
+`;
+
 const Cars = () => {
   const dispatch = useDispatch();
   const cars = useSelector((state) => state.car.cars);
@@ -23,12 +28,16 @@ const Cars = () => {
   }, [dispatch]);
 
   return (
-    <Container>
-      {cars.map((item) => (
-        <CarItem item={item} key={item.id} />
-      )).slice(0,8)}
+      <div>
+        <Header>Our Service</Header>
+        <Container>
+          {cars.map((item) => (
+            <CarItem item={item} key={item.id} />
+          )).slice(0,8)}
 
-    </Container>
+        </Container>
+      </div>
+
   );
 };
 

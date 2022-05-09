@@ -58,6 +58,10 @@ const View = styled.button`
     color:white;
     cursor: pointer;
     font-weight: 600;
+       &:hover{
+      background-color: #a6cfdc;
+  }
+    
 `;
 
 const Delete = styled.button`
@@ -69,6 +73,9 @@ const Delete = styled.button`
     cursor: pointer;
     font-weight: 600;
     margin-left:30px;
+     &:hover{
+      background-color: #FFA07A;
+  }
 `;
 
 
