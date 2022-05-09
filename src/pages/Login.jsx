@@ -1,5 +1,11 @@
 import styled from "styled-components";
 import {mobile} from "../responsive";
+import Spinner from '../components/Loading'
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {loginFunc} from "../redux/apiCalls";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -50,22 +56,48 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
 
 const Login = () => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {isFetching, error, currentUser, isSuccess} = useSelector(state=>state.user)
+
+    // useEffect(()=>{
+    //   const token = getUserToken();
+    //   if (token) {
+    //     alert(5)
+    //     navigate('/')
+    //   }
+    // }, [])
+
+
+    const handleLogin = (e) =>{
+        e.preventDefault()
+        loginFunc(dispatch,{username, password})
+
+    }
     return (
         <Container>
             <Wrapper>
                 <Title>SIGN IN</Title>
                 <Form>
-                    <Input placeholder="username" />
-                    <Input placeholder="password" />
-                    <Button>LOGIN</Button>
+                    <Input type="text" placeholder="username" name="username" id="username"
+                           onChange={(e)=>setUsername(e.target.value)}
+                    />
+                    <Input type="password" placeholder="password" name="password" id="password"
+                           onChange={(e)=>setPassword(e.target.value)}
+                    />
+                    <Button onClick={handleLogin}>
+                        {isFetching ? (
+                            <Spinner/>
+                        ) : (
+                            <span>Sign In{'  '}</span>
+                        )}
+                    </Button>
                     <Link to="/register">CREATE A NEW ACCOUNT</Link>
                 </Form>
             </Wrapper>

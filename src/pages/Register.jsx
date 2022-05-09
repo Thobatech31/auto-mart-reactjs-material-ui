@@ -1,5 +1,12 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
+import Spinner from '../components/Loading'
+import {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {useNavigate} from 'react-router-dom';
+import {registerFunc} from "../redux/apiCalls";
+import {Link} from "react-router-dom";
+
 
 const Container = styled.div`
   width: 100vw;
@@ -54,24 +61,68 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+
 const Register = () => {
+    const [username, setUsername] = useState("");
+    const [email, setEmail] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [first_name, setFirstname] = useState("");
+    const [last_name, setLastname] = useState("");
+    const [address, setAddress] = useState("");
+    const [password, setPassword] = useState("");
+
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+
+    const {isFetching, error, currentUser, isSuccess} = useSelector(state=>state.user)
+
+    // useEffect(()=>{
+    //   if (isSuccess) {
+    //     navigate('/login')
+    //   }
+    // }, [isFetching])
+
+    const handleRegister = (e) =>{
+        e.preventDefault()
+        registerFunc(dispatch,{username, email, mobile, first_name, last_name, address, password})
+    }
     return (
         <Container>
             <Wrapper>
                 <Title>CREATE AN ACCOUNT</Title>
                 <Form>
-                    <Input placeholder="Car name" />
-                    <Input placeholder="Car description" />
-                    <Input placeholder="Car Model" />
-                    <Input placeholder="Car Year" />
-                    <Input placeholder="Car Color" />
-                    <Input placeholder="Car Price" />
-                    <Input placeholder="password" />
+                    <Input type="text" placeholder="username" name="username" id="username"
+                           onChange={(e)=>setUsername(e.target.value)}
+                    />
+                    <Input type="email" placeholder="email" name="email" id="email"
+                           onChange={(e)=>setEmail(e.target.value)}
+                    />
+                    <Input type="text" placeholder="mobile" name="mobile" id="mobile"
+                           onChange={(e)=>setMobile(e.target.value)}
+                    />
+                    <Input type="text" placeholder="First Name" name="first_name" id="first_name"
+                           onChange={(e)=>setFirstname(e.target.value)}
+                    />
+                    <Input type="text" placeholder="Last Name" name="last_name" id="last_name"
+                           onChange={(e)=>setLastname(e.target.value)}
+                    />
+                    <Input type="text" placeholder="Address" name="address" id="address"
+                           onChange={(e)=>setAddress(e.target.value)}
+                    />
+                    <Input type="password" placeholder="password" name="password" id="password"
+                           onChange={(e)=>setPassword(e.target.value)}
+                    />
                     <Agreement>
                         By creating an account, I consent to the processing of my personal
                         data in accordance with the <b>PRIVACY POLICY</b>
                     </Agreement>
-                    <Button>CREATE</Button>
+                    <Button onClick={handleRegister}>
+                        {isFetching ? (
+                            <Spinner/>
+                        ) : (
+                            <span>Sign Up{'  '}</span>
+                        )}
+                    </Button>
                 </Form>
             </Wrapper>
         </Container>

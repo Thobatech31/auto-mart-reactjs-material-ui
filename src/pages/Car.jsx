@@ -4,6 +4,11 @@ import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
 import { mobile } from "../responsive";
 
+import {useLocation} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {userRequest} from "../requestMethod";
+import { useDispatch } from "react-redux";
+import Notification from "../utils/notification";
 
 const Container = styled.div``;
 
@@ -14,7 +19,7 @@ const Wrapper = styled.div`
 `;
 
 const ImgContainer = styled.div`
-  flex: 1;
+  flex: 1.5;
 `;
 
 const Image = styled.img`
@@ -38,9 +43,11 @@ const Desc = styled.p`
   margin: 20px 0px;
 `;
 
-const Price = styled.span`
+const Price = styled.p`
   font-weight: 100;
-  font-size: 40px;
+  font-size: 18px;
+  margin-bottom:20px;
+  font-weight:400;
 `;
 
 const FilterContainer = styled.div`
@@ -85,54 +92,59 @@ const AddContainer = styled.div`
   ${mobile({ width: "100%" })}
 `;
 
-const AmountContainer = styled.div`
-  display: flex;
-  align-items: center;
-  font-weight: 700;
-`;
-
-
 const Button = styled.button`
-  padding: 15px 30px;
-  border: 2px solid red;
-  background-color: white;
+  padding: 10px 25px;
+  border: 1px solid black;
+  background-color: teal;
+  color:white;
+  border-radius: 5px;
   cursor: pointer;
-  font-weight: 500;
-
+  font-weight: 500;  
   &:hover{
-      background-color: #f8f4f4;
+      background-color: teal;
   }
 `;
 
 const Car = () => {
+    const location = useLocation();
+    const car_id = location.pathname.split("/")[2];
+    const [car, setCar] = useState({});
+    useEffect(() =>{
+        const getCar = async () => {
+            try{
+                const res = await userRequest.get("/cars/" + car_id);
+                setCar(res.data.data);
+                Notification.success(res.data.status.msg);
+            }catch (err){
+                Notification.error(err.response.data.msg);
+            }
+        }
+        getCar();
+    }, [car_id])
     return (
         <Container>
             <Navbar />
             <Wrapper>
                 <ImgContainer>
-                    <Image src="https://cdn.sportscardigest.com/wp-content/uploads/20210507042937/GR-Supra-1-1.jpg" />
+                    <Image src={car.img} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>Denim Jumpsuit</Title>
+                    <Title>{car.title}</Title>
                     <Desc>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
-                        venenatis, dolor in finibus malesuada, lectus ipsum porta nunc, at
-                        iaculis arcu nisi sed mauris. Nulla fermentum vestibulum ex, eget
-                        tristique tortor pretium ut. Curabitur elit justo, consequat id
-                        condimentum ac, volutpat ornare.
+                        {car.desc}
                     </Desc>
-                    <Price>$ 20</Price>
+                    <Price>Model Name: {car.model_name}</Price>
+                    <Price>Model Year: {car.model_year}</Price>
+                    <Price>Price: ₦ {car.price}</Price>
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black" />
-                            <FilterColor color="darkblue" />
-                            <FilterColor color="gray" />
+                            <FilterColor color={car.color} />
                         </Filter>
 
                     </FilterContainer>
                     <AddContainer>
-                        <Button>DELETE</Button>
+                        <Button>Create Car Post</Button>
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>
