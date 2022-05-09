@@ -2,6 +2,9 @@ import styled from "styled-components";
 import { carlists } from "../data";
 import { mobile } from "../responsive";
 import CarItem from "./CarItem";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getCars} from "../redux/apiCalls";
 
 const Container = styled.div`
   display: flex;
@@ -12,11 +15,19 @@ const Container = styled.div`
 `;
 
 const Cars = () => {
+  const dispatch = useDispatch();
+  const cars = useSelector((state) => state.car.cars);
+
+  useEffect(() => {
+    getCars(dispatch);
+  }, [dispatch]);
+
   return (
     <Container>
-      {carlists.map((item) => (
+      {cars.map((item) => (
         <CarItem item={item} key={item.id} />
       ))}
+
     </Container>
   );
 };

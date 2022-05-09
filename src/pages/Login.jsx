@@ -5,6 +5,7 @@ import {useEffect, useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from 'react-router-dom';
 import {loginFunc} from "../redux/apiCalls";
+import {Link} from "react-router-dom";
 
 const Container = styled.div`
   width: 100vw;
@@ -55,12 +56,6 @@ const Button = styled.button`
   margin-bottom: 10px;
 `;
 
-const Link = styled.a`
-  margin: 5px 0px;
-  font-size: 12px;
-  text-decoration: underline;
-  cursor: pointer;
-`;
 
 const Login = () => {
     const [username, setUsername] = useState("");
