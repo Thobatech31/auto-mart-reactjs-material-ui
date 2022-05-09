@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import {Link} from "react-router-dom";
+import {useSelector} from "react-redux";
 
 
 const Container = styled.div`
@@ -71,6 +72,14 @@ const MenuItem = styled.div`
   margin-left: 25px;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
+const UserItem = styled.div`
+  font-size: 20px;
+   font-weight: bold;
+  color: teal;
+  cursor: pointer;
+  margin-left: 25px;
+  ${mobile({ fontSize: "14px", marginLeft: "10px" })}
+`;
 
 const Button = styled.button`
   padding: 10px 20px;
@@ -101,6 +110,8 @@ const Button2 = styled.button`
 
 
 const Navbar = () => {
+    const user = useSelector(state=>state.user.currentUser)
+
     return (
         <Container>
             <Wrapper>
@@ -118,12 +129,20 @@ const Navbar = () => {
                 </Center>
 
                 <Right>
-                    <Link to={"/register"}>
-                        <Button>REGISTER</Button>
-                    </Link>
-                    <Link to={"/login"}>
-                        <Button2>Login</Button2>
-                    </Link>
+                    {
+                        user
+                            ?
+                            <UserItem>{user.data.last_name} {"  "} {user.data.first_name}</UserItem>
+                            :
+                            <>
+                                <Link to={"/register"}>
+                                    <Button>REGISTER</Button>
+                                </Link>
+                                <Link to={"/login"}>
+                                    <Button2>Login</Button2>
+                                </Link>
+                            </>
+                    }
                 </Right>
             </Wrapper>
         </Container>

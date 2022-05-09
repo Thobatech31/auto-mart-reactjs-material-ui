@@ -47,7 +47,6 @@ export const loginFunc = async (dispatch, user)=>{
           "token",
           res.data.data.token
       );
-      console.log("djhksjksjksjk", res.data)
       localStorage.setItem('user', JSON.stringify(res.data.data))
       Notification.success(res.data.status.msg);
     }
