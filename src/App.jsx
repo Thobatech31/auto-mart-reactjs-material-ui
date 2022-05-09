@@ -2,6 +2,7 @@ import Car from "./pages/Car";
 import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import CreateCarPost from "./pages/CreateCar/CreateCarPost";
 import {useSelector} from "react-redux";
 
 
@@ -17,6 +18,7 @@ const App = () => {
                 <Route path="/register" element={user ? <Navigate to={'/'} />  :  <Register/>} />
                 <Route exact path="/" element={<Home/>} />
                 <Route path="/car/:id" element={<Car/>} />
+                <Route path="/create" element={<CreateCarPost/>} />
             </Routes>
         </Router>
     )
