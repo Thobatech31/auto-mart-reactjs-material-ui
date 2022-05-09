@@ -73,38 +73,17 @@ export const getCars = async (dispatch) => {
 };
 
 //
-// export const deleteProduct = async (id, dispatch) => {
-//   dispatch(deleteProductStart());
-//   try {
-//     // const res = await userRequest.delete(`/cars/${id}`);
-//     dispatch(deleteProductSuccess(id));
-//     // Notification.success(res.data.status.msg);
-//   } catch (err) {
-//     dispatch(deleteProductFailure());
-//     Notification.error(err.response.data.msg);
-//   }
-// };
-//
-// export const updateProduct = async (id, product, dispatch) => {
-//   dispatch(updateProductStart());
-//   try {
-//     // update
-//     dispatch(updateProductSuccess({ id, product }));
-//     // Notification.success(res.data.status.msg);
-//   } catch (err) {
-//     dispatch(updateProductFailure());
-//     Notification.error(err.response.data.msg);
-//   }
-// };
-// export const addProduct = async (product, dispatch) => {
-//   dispatch(addProductStart());
-//   try {
-//     const res = await userRequest.post(`/cars`, product);
-//     dispatch(addProductSuccess(res.data));
-//     Notification.success(res.data.status.msg);
-//   } catch (err) {
-//     dispatch(addProductFailure());
-//     Notification.error(err.response.data.msg);
-//   }
-// };
+export const deleteCarFunc = async (id, dispatch) => {
+  dispatch(deleteCarStart());
+  try {
+    const res = await userRequest.delete(`/cars/${id}`);
+    dispatch(deleteCarSuccess(id));
+    Notification.success(res.data.status.msg);
+    window.location.reload();
+  } catch (err) {
+    dispatch(deleteCarFailure());
+    Notification.error(err.response.data.msg);
+  }
+};
+
 

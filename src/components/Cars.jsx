@@ -27,6 +27,7 @@ const Cars = () => {
       {cars.map((item) => (
         <CarItem item={item} key={item.id} />
       ))}
+
     </Container>
   );
 };

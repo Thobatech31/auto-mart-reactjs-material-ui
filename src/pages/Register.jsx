@@ -85,7 +85,6 @@ const Register = () => {
     const handleRegister = (e) =>{
         e.preventDefault()
         registerFunc(dispatch,{username, email, mobile, first_name, last_name, address, password})
-
     }
     return (
         <Container>

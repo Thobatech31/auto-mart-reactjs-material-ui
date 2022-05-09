@@ -28,10 +28,11 @@ export const carSlice = createSlice({
     },
     deleteCarSuccess: (state, action) => {
       state.isFetching = false;
-      state.cars.splice(
-        state.cars.findIndex((item) => item._id === action.payload),
-        1
-      );
+      // state.cars.splice(
+      //   state.cars.findIndex((item) => item._id === action.payload),
+      //   1
+      // );
+      // state.cars = {...state.cars};
     },
     deleteCarFailure: (state) => {
       state.isFetching = false;
