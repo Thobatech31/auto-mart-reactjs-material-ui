@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import { deleteCarFunc } from "../redux/apiCalls";
 import {useDispatch, useSelector} from "react-redux";
 const Container = styled.div`
-  flex: 1;
+  flex: 2;
   margin: 5px;
    display: block;
   align-items: center;
@@ -58,6 +58,10 @@ const View = styled.button`
     color:white;
     cursor: pointer;
     font-weight: 600;
+       &:hover{
+      background-color: #a6cfdc;
+  }
+    
 `;
 
 const Delete = styled.button`
@@ -69,6 +73,9 @@ const Delete = styled.button`
     cursor: pointer;
     font-weight: 600;
     margin-left:30px;
+     &:hover{
+      background-color: #FFA07A;
+  }
 `;
 
 
