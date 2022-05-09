@@ -26,7 +26,7 @@ const Cars = () => {
     <Container>
       {cars.map((item) => (
         <CarItem item={item} key={item.id} />
-      ))}
+      )).slice(0,8)}
 
     </Container>
   );

@@ -52,7 +52,7 @@ const Desc = styled.p`
 
 const View = styled.button`
     border:none;
-    padding: 12px 30px;
+    padding: 10px 25px;
     border-radius:5px;
     background-color: teal;
     color:white;
@@ -62,13 +62,13 @@ const View = styled.button`
 
 const Delete = styled.button`
     border:none;
-    padding: 12px 30px;
+    padding: 10px 25px;
     border-radius:5px;
     background-color: red;
     color:white;
     cursor: pointer;
     font-weight: 600;
-    margin-left:100px;
+    margin-left:30px;
 `;
 
 
