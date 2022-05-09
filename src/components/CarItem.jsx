@@ -3,7 +3,7 @@ import { mobile } from "../responsive";
 import {Link} from "react-router-dom";
 
 const Container = styled.div`
-  flex: 1;
+  flex: 2;
   margin: 5px;
    display: flex;
   align-items: center;
