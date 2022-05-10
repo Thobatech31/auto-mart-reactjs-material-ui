@@ -126,7 +126,7 @@ const Car = () => {
             <Navbar />
             <Wrapper>
                 <ImgContainer>
-                    <Image src={car.img} />
+                    <Image src={car.image} />
                 </ImgContainer>
                 <InfoContainer>
                     <Title>{car.car_name}</Title>

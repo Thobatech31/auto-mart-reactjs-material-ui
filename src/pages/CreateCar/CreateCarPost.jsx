@@ -3,8 +3,6 @@ import "./newCar.css";
 import Spinner from '../../components/Loading'
 import { addCar } from "../../redux/apiCalls";
 import {useDispatch, useSelector} from "react-redux";
-import axios from "axios";
-import {getUserToken} from "../../helpers/auth";
 
 
 export default function CreateCarPost() {
@@ -19,11 +17,10 @@ export default function CreateCarPost() {
     const {isFetching} = useSelector((state) => state.car);
 
     const dispatch = useDispatch();
-    const TOKEN = getUserToken();
     const handleClick = (e) => {
         e.preventDefault();
-        // addCar(dispatch,{title,image,desc,model_name,model_year,color,price})
         let formData = new FormData();
+
         formData.append('car_name', car_name);
         formData.append('image', image);
         formData.append('desc', desc);
@@ -32,33 +29,13 @@ export default function CreateCarPost() {
         formData.append('color', color);
         formData.append('price', price);
 
-
-        axios({
-            method: "post",
-            url: "https://auto-mart-car-app.herokuapp.com/api/cars",
-            data: formData,
-            headers: {
-                'Authorization': `Bearer ${TOKEN}`,
-                "Content-Type": "multipart/form-data"
-            },
-        })
-            .then(function (response) {
-                //handle success
-                console.log(response);
-            })
-            .catch(function (response) {
-                //handle error
-                console.log(response);
-            });
+        addCar(dispatch,formData)
     };
 
-   // const handleFile = (e) => {
-   //      console.log(e.target.files[0])
-   //  }
 
     return (
         <div className="newCar">
-            <h1 className="addCarTitle">New Car Post hjh</h1>
+            <h1 className="addCarTitle">New Car Post</h1>
             <form className="addCarForm">
                 <div className="addCarItem">
                     <label>Image</label>
@@ -77,7 +54,7 @@ export default function CreateCarPost() {
                         name="title"
                         type="text"
                         placeholder="Benz"
-                        onChange={(e)=>setTitle(e.target.value)}
+                        onChange={(e)=>setCarName(e.target.value)}
                     />
                 </div>
                 <div className="addCarItem">
