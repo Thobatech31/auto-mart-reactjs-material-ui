@@ -129,7 +129,7 @@ const Car = () => {
                     <Image src={car.img} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>{car.title}</Title>
+                    <Title>{car.car_name}</Title>
                     <Desc>
                         {car.desc}
                     </Desc>

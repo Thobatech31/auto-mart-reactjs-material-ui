@@ -95,7 +95,7 @@ const CarItem = ({ item }) => {
 
         <Desc>{item.desc.slice(0, 70)} ........</Desc>
           <Info>
-            <Title>{item.title}</Title>
+            <Title>{item.car_name}</Title>
           </Info>
         </Link>
 
