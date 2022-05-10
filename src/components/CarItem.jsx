@@ -91,11 +91,11 @@ const CarItem = ({ item }) => {
     <Container>
         <Link style={{textDecoration: 'none'}} to={`/car/${item._id}`}>
 
-        <Image src={item.img} />
+        <Image src={item.image} />
 
         <Desc>{item.desc.slice(0, 70)} ........</Desc>
           <Info>
-            <Title>{item.title}</Title>
+            <Title>{item.car_name}</Title>
           </Info>
         </Link>
 

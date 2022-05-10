@@ -4,9 +4,10 @@ import Spinner from '../../components/Loading'
 import { addCar } from "../../redux/apiCalls";
 import {useDispatch, useSelector} from "react-redux";
 
+
 export default function CreateCarPost() {
-    const [image, setImage] = useState("");
-    const [title, setTitle] = useState("");
+    const [image, setFile] = useState(null);
+    const [car_name, setCarName] = useState("");
     const [desc, setDesc] = useState("");
     const [model_name, setModelName] = useState("");
     const [model_year, setModelYear] = useState("");
@@ -16,15 +17,25 @@ export default function CreateCarPost() {
     const {isFetching} = useSelector((state) => state.car);
 
     const dispatch = useDispatch();
-
     const handleClick = (e) => {
         e.preventDefault();
-        addCar(dispatch,{title,image,desc,model_name,model_year,color,price})
+        let formData = new FormData();
+
+        formData.append('car_name', car_name);
+        formData.append('image', image);
+        formData.append('desc', desc);
+        formData.append('model_name', model_name);
+        formData.append('model_year', model_year);
+        formData.append('color', color);
+        formData.append('price', price);
+
+        addCar(dispatch,formData)
     };
+
 
     return (
         <div className="newCar">
-            <h1 className="addCarTitle">New Car Post hjh</h1>
+            <h1 className="addCarTitle">New Car Post</h1>
             <form className="addCarForm">
                 <div className="addCarItem">
                     <label>Image</label>
@@ -32,7 +43,8 @@ export default function CreateCarPost() {
                         type="file"
                         id="image"
                         name="image"
-                        onChange={(e) => setImage(e.target.value)}
+                        onChange={(e) => setFile(e.target.files[0])}
+                        // onChange={(e) => handleFile(e)}
                     />
                 </div>
 
@@ -42,7 +54,7 @@ export default function CreateCarPost() {
                         name="title"
                         type="text"
                         placeholder="Benz"
-                        onChange={(e)=>setTitle(e.target.value)}
+                        onChange={(e)=>setCarName(e.target.value)}
                     />
                 </div>
                 <div className="addCarItem">
@@ -63,14 +75,14 @@ export default function CreateCarPost() {
                         onChange={(e)=>setModelName(e.target.value)}
                     />
                 </div> <div className="addCarItem">
-                    <label>Model Year</label>
-                    <input
-                        name="model_year"
-                        type="text"
-                        placeholder="2022"
-                        onChange={(e)=>setModelYear(e.target.value)}
-                    />
-                </div>
+                <label>Model Year</label>
+                <input
+                    name="model_year"
+                    type="text"
+                    placeholder="2022"
+                    onChange={(e)=>setModelYear(e.target.value)}
+                />
+            </div>
                 <div className="addCarItem">
                     <label>Color</label>
                     <input
