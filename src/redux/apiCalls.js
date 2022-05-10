@@ -1,5 +1,5 @@
 import { loginFailure, loginStart, loginSuccess, registerStart, registerSuccess, registerFailure } from "./userRedux";
-import {publicRequest, userRequest, userRequestForm} from "../requestMethod";
+import {publicRequest, userRequest} from "../requestMethod";
 import Notification from "../utils/notification";
 import {
   getCarFailure,
@@ -89,12 +89,11 @@ export const deleteCarFunc = async (id, dispatch) => {
 export const addCar = async (dispatch, car) => {
   dispatch(addCarStart());
   try {
-    // alert(4)
-    const res = await userRequestForm.post(`/cars`, car);
+    const res = await userRequest.post(`/cars`, car);
     dispatch(addCarSuccess(res.data.data));
     Notification.success(res.data.status.msg);
+    window.location.href = '/';
   } catch (err) {
-    // alert(6)
     dispatch(addCarFailure());
     console.log(err)
     Notification.error(err.message);
