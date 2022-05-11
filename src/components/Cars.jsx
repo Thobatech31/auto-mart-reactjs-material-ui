@@ -26,13 +26,28 @@ const CreateDiv = styled.div`
 `;
 
 const Button = styled.button`
-  padding: 15px 35px;
+  padding: 12px 35px;
   border: 1px solid white;
   background-color: blue;
   border-radius:5px;
   cursor: pointer;
   font-weight: 500;
   color:white;
+
+  &:hover{
+      background-color: lightblue;
+  }
+`;
+
+const ButtonAll = styled.button`
+  padding: 12px 35px;
+  border: 1px solid white;
+  background-color: teal;
+  border-radius:5px;
+  cursor: pointer;
+  font-weight: 500;
+  color:white;
+  margin-right:5px;
 
   &:hover{
       background-color: lightblue;
@@ -51,6 +66,9 @@ const Cars = () => {
       <div>
 
           <CreateDiv>
+              <Link to={"/cars"}>
+                  <ButtonAll>View All Cars</ButtonAll>
+              </Link>
               <Link to={"/create"}>
                   <Button>Create Car Post</Button>
               </Link>
@@ -59,7 +77,7 @@ const Cars = () => {
           <Header>Our Service</Header>
         <Container>
           {cars.map((item) => (
-            <CarItem item={item} key={item.id} />
+            <CarItem item={item} key={item._id} />
           )).slice(0,8)
           }
 

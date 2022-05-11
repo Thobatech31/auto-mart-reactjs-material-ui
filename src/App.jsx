@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import CreateCarPost from "./pages/CreateCar/CreateCarPost";
+import CarListTable from "./pages/carLists/CarList"
 import {useSelector} from "react-redux";
 
 
@@ -19,6 +20,7 @@ const App = () => {
                 <Route exact path="/" element={user ? <Home/>  :  <Login/>}/>
                 <Route path="/car/:id" element={user ? <Car/>  :  <Login/>} />
                 <Route path="/create" element={user ? <CreateCarPost/>  :  <Login/>} />
+                <Route path="/cars" element={user ? <CarListTable/>  :  <Login/>} />
             </Routes>
         </Router>
     )

@@ -26,25 +26,6 @@ const Left = styled.div`
   align-items: center;
 `;
 
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  ${mobile({ display: "none" })}
-`;
-
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-`;
-
-const Input = styled.input`
-  border: none;
-  ${mobile({ width: "50px" })}
-`;
-
 const Center = styled.div`
   flex: 1;
   display: flex;
@@ -71,6 +52,7 @@ const MenuItem = styled.div`
   font-size: 14px;
   cursor: pointer;
   margin-left: 25px;
+  font-weight:400;
   ${mobile({ fontSize: "12px", marginLeft: "10px" })}
 `;
 const UserItem = styled.div`
@@ -162,6 +144,7 @@ const Navbar = () => {
                     <MenuItem><Link to={"/"}>Home</Link></MenuItem>
                     <MenuItem>About Us</MenuItem>
                     <MenuItem>Service</MenuItem>
+                    <MenuItem> <Link to={"/cars"}>Car Lists</Link></MenuItem>
                     <MenuItem> <Link to={"/create"}>Create Car Post</Link></MenuItem>
                 </Center>
 
