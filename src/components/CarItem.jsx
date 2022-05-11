@@ -10,7 +10,7 @@ const Container = styled.div`
   align-items: center;
   justify-content: center;
   min-width: 280px;
-  height: 350px;
+  height: 400px;
   position: relative;
   border: 1px solid #fcf5f5;
   border-radius: 5px;
@@ -21,7 +21,7 @@ const Container = styled.div`
 
 const Image = styled.img`
   width: 100%;
-  height: 250px;
+  height: 300px;
   object-fit: cover;
   ${mobile({ height: "20vh" })}
 
@@ -93,7 +93,7 @@ const CarItem = ({ item }) => {
 
         <Image src={item.image} />
 
-        <Desc>{item.desc.slice(0, 70)} ........</Desc>
+        <Desc>{item.desc} </Desc>
           <Info>
             <Title>{item.car_name}</Title>
           </Info>
@@ -112,7 +112,8 @@ const CarItem = ({ item }) => {
            </Delete>
        </div>
     </Container>
-  );
+
+    );
 };
 
 export default CarItem;
