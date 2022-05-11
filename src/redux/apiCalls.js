@@ -49,6 +49,7 @@ export const loginFunc = async (dispatch, user)=>{
       );
       localStorage.setItem('user', JSON.stringify(res.data.data))
       Notification.success(res.data.status.msg);
+      window.location.href = "/"
     }
   }catch (err){
     dispatch(loginFailure())
@@ -62,8 +63,6 @@ export const getCars = async (dispatch) => {
   dispatch(getCarStart());
   try {
     const res = await publicRequest.get("/cars");
-    console.log("CAAAAARRR", res.data)
-    // console.log("ididididid", res.data.data[0].image)
     dispatch(getCarSuccess(res.data.data));
     Notification.success(res.data.status.msg);
   } catch (err) {
@@ -94,7 +93,6 @@ export const addCar = async (dispatch, car) => {
     const res = await userRequest.post(`/cars/cloudinary`, car);
     dispatch(addCarSuccess(res.data.data));
     Notification.success(res.data.status.msg);
-    window.location.href = '/';
   } catch (err) {
     dispatch(addCarFailure());
     console.log(err)
