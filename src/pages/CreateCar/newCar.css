@@ -1,6 +1,8 @@
 .newCar {
-  flex: 4;
-  margin-left: 100px;
+  /*flex: 4;*/
+  display: flex;
+  justify-content: space-evenly;
+  /*margin-left: 100px;*/
 }
 
 .addCarForm {
@@ -26,11 +28,26 @@
 
 .addCarButton {
   margin-top: 10px;
-  padding: 12px 25px;
+  padding: 15px 25px;
   border: none;
   border-radius: 10px;
-  background-color: darkblue;
+  background-color: teal;
   color: white;
   font-weight: 600;
   cursor: pointer;
+  width: 100%;
+}
+
+.previewDiv{
+  margin-top: 100px;
+  height: 500px;
+  width: 25%;
+  border-radius: 5px;
+  border: 1px solid teal;
+}
+
+.previewDiv img{
+  height: 500px;
+  width: 100%;
+  object-fit: cover;
 }

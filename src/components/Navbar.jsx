@@ -108,6 +108,20 @@ const Button2 = styled.button`
   }
 `;
 
+const Button3 = styled.button`
+  padding: 10px 25px;
+  border: 1px solid white;
+  background-color: blue;
+  border-radius:5px;
+  cursor: pointer;
+  font-weight: 500;
+  color:white;
+
+  &:hover{
+      background-color: lightblue;
+  }
+`;
+
 
 const Navbar = () => {
     const user = useSelector(state=>state.user.currentUser)
@@ -117,7 +131,9 @@ const Navbar = () => {
             <Wrapper>
                 <Left>
 
-                        <Logo>Auto Mart</Logo>
+                        <Link to={"/"}>
+                            <Logo>Auto Mart</Logo>
+                        </Link>
 
                 </Left>
 
@@ -129,6 +145,9 @@ const Navbar = () => {
                 </Center>
 
                 <Right>
+                    <Link to={"/create"}>
+                        <Button3>Create Car Post</Button3>
+                    </Link>
                     {
                         user
                             ?
