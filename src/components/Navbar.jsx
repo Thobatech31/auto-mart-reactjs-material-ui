@@ -2,7 +2,8 @@ import React from "react";
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import {Link} from "react-router-dom";
-import {useSelector} from "react-redux";
+import {useDispatch,useSelector} from "react-redux";
+import { logoutFunc } from "../redux/apiCalls";
 
 
 const Container = styled.div`
@@ -108,7 +109,7 @@ const Button2 = styled.button`
   }
 `;
 
-const Button3 = styled.button`
+const Createpost = styled.button`
   padding: 10px 25px;
   border: 1px solid white;
   background-color: blue;
@@ -116,38 +117,58 @@ const Button3 = styled.button`
   cursor: pointer;
   font-weight: 500;
   color:white;
-
+  margin-right: 5px;
   &:hover{
       background-color: lightblue;
   }
 `;
 
+const Logout = styled.button`
+  padding: 10px 20px;
+  border: 1px solid white;
+  background-color: red;
+  border-radius:5px;
+  cursor: pointer;
+  font-weight: 500;
+  color:white;
+
+  &:hover{
+      background-color: brown;
+  }
+`;
+
+
 
 const Navbar = () => {
-    const user = useSelector(state=>state.user.currentUser)
+    const user = useSelector(state=>state.user.currentUser);
+    const dispatch = useDispatch();
+
+    const logoutFun = () =>{
+        dispatch(logoutFunc)
+    }
 
     return (
         <Container>
             <Wrapper>
                 <Left>
 
-                        <Link to={"/"}>
-                            <Logo>Auto Mart</Logo>
-                        </Link>
+                    <Link to={"/"}>
+                        <Logo>Auto Mart</Logo>
+                    </Link>
 
                 </Left>
 
                 <Center>
-                    <MenuItem>HOME</MenuItem>
-                    <MenuItem>ABOUT US</MenuItem>
-                    <MenuItem>CONTACT</MenuItem>
-                    <MenuItem>SERVICE</MenuItem>
+                    <MenuItem><Link to={"/"}>Home</Link></MenuItem>
+                    <MenuItem>About Us</MenuItem>
+                    <MenuItem>Service</MenuItem>
+                    <MenuItem> <Link to={"/create"}>Create Car Post</Link></MenuItem>
                 </Center>
 
                 <Right>
-                    <Link to={"/create"}>
-                        <Button3>Create Car Post</Button3>
-                    </Link>
+
+                    <Logout onClick={logoutFun}>Logout</Logout>
+
                     {
                         user
                             ?
@@ -155,7 +176,7 @@ const Navbar = () => {
                             :
                             <>
                                 <Link to={"/register"}>
-                                    <Button>REGISTER</Button>
+                                    <Button>Register</Button>
                                 </Link>
                                 <Link to={"/login"}>
                                     <Button2>Login</Button2>

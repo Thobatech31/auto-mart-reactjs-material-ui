@@ -1,4 +1,4 @@
-import { loginFailure, loginStart, loginSuccess, registerStart, registerSuccess, registerFailure } from "./userRedux";
+import {logout, loginFailure, loginStart, loginSuccess, registerStart, registerSuccess, registerFailure } from "./userRedux";
 import {publicRequest, userRequest} from "../requestMethod";
 import Notification from "../utils/notification";
 import {
@@ -56,6 +56,14 @@ export const loginFunc = async (dispatch, user)=>{
     Notification.error(err.response.data.msg);
   }
 };
+
+// Logout user
+export const logoutFunc = async (dispatch) => {
+  dispatch(logout());
+  localStorage.removeItem('user')
+  localStorage.removeItem('token')
+}
+
 
 
 
