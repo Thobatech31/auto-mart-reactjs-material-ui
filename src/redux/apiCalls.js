@@ -99,8 +99,10 @@ export const addCar = async (dispatch, car) => {
   try {
     // const res = await userRequest.post(`/cars`, car);
     const res = await userRequest.post(`/cars/cloudinary`, car);
+    console.log("post data", res.data.data)
     dispatch(addCarSuccess(res.data.data));
     Notification.success(res.data.status.msg);
+    window.location.href="/";
   } catch (err) {
     dispatch(addCarFailure());
     console.log(err)
