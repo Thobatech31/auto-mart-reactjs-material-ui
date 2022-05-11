@@ -9,6 +9,8 @@ import {useEffect, useState} from "react";
 import {userRequest} from "../requestMethod";
 import { useDispatch } from "react-redux";
 import Notification from "../utils/notification";
+import {Link} from "react-router-dom";
+
 
 const Container = styled.div``;
 
@@ -77,13 +79,6 @@ const FilterColor = styled.div`
   cursor: pointer;
 `;
 
-const FilterSize = styled.select`
-  margin-left: 10px;
-  padding: 5px;
-`;
-
-const FilterSizeOption = styled.option``;
-
 const AddContainer = styled.div`
   width: 50%;
   display: flex;
@@ -126,10 +121,10 @@ const Car = () => {
             <Navbar />
             <Wrapper>
                 <ImgContainer>
-                    <Image src={car.img} />
+                    <Image src={car.image} />
                 </ImgContainer>
                 <InfoContainer>
-                    <Title>{car.title}</Title>
+                    <Title>{car.car_name}</Title>
                     <Desc>
                         {car.desc}
                     </Desc>
@@ -144,7 +139,9 @@ const Car = () => {
 
                     </FilterContainer>
                     <AddContainer>
-                        <Button>Create Car Post</Button>
+                        <Link to={"/create"}>
+                            <Button>Create Car Post</Button>
+                        </Link>
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>
