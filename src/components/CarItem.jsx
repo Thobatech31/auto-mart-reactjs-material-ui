@@ -93,7 +93,7 @@ const CarItem = ({ item }) => {
 
         <Image src={item.image} />
 
-        <Desc>{item.desc} </Desc>
+        <Desc>{(item.desc && item.desc).slice(0, 70)}.... </Desc>
           <Info>
             <Title>{item.car_name}</Title>
           </Info>
