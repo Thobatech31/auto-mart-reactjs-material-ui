@@ -8,14 +8,14 @@ export const sliderItems = [
   },
     {
       id: 2,
-      img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5rAkCqp4LjQv5fs55B6JGIEZ4DA8hkzz5AtnDGvQE-VnlZM5hE2Aluq_9eWXquhQi5zY&usqp=CAU",
+      img: "https://www.pngitem.com/pimgs/m/248-2486337_lamborghini-urus-no-background-hd-png-download.png",
       title: "2020 Lamborghini Urus",
       desc: "Every Urus is packed with the latest connectivity and infotainment features. Along with a fully digital gauge cluster, there are two touchscreens built into the center stack that include controls for the climate system, audio, and more.",
       bg: "ffffff",
     },
   {
     id: 2,
-    img: "https://w7.pngwing.com/pngs/1010/68/png-transparent-2018-rolls-royce-phantom-rolls-royce-ghost-rolls-royce-holdings-plc-car-car-sedan-car-vehicle.png",
+    img: "https://www.seekpng.com/png/detail/66-665140_rolls-royce-ghost-2018-rolls-royce-phantom-png.png",
     title: "Rolls-Royce Phantom",
     desc: "Rolls-Royce Phantom has a sheer complication. And there's no wonder that it's both awe-inspiring and, at the same time, slightly terrifying from the reliability point of focus. As a matter of fact, the engine comes with a long lineage, and it is unlikely to cause issues. However, the complicated electronics come with the full weight of BMW Group's expertise! And that's where its reliability can never get questioned! All in all, it's definitely a great investment decision to buy this car.",
     bg: "ffffff",
