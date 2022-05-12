@@ -144,12 +144,14 @@ const Navbar = () => {
 
                 <Right>
 
-                    <Logout onClick={logoutFun}>Logout</Logout>
-
                     {
                         user
                             ?
-                            <UserItem>{user.data.username} </UserItem>
+                           <>
+                               <Logout onClick={logoutFun}>Logout</Logout>
+
+                               <UserItem>{user.data.username} </UserItem>
+                           </>
                             :
                             <>
                                 <Link to={"/register"}>
