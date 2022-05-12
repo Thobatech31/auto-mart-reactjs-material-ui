@@ -109,7 +109,7 @@ const Car = () => {
             try{
                 const res = await userRequest.get("/cars/" + car_id);
                 setCar(res.data.data);
-                Notification.success(res.data.status.msg);
+                // Notification.success(res.data.status.msg);
             }catch (err){
                 Notification.error(err.response.data.msg);
             }

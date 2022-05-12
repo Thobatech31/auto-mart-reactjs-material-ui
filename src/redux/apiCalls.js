@@ -72,7 +72,7 @@ export const getCars = async (dispatch) => {
   try {
     const res = await publicRequest.get("/cars");
     dispatch(getCarSuccess(res.data.data));
-    Notification.success(res.data.status.msg);
+    // Notification.success(res.data.status.msg);
   } catch (err) {
     dispatch(getCarFailure());
     Notification.error(err.response.data.msg);
