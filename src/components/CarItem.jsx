@@ -17,13 +17,14 @@ const Container = styled.div`
   box-shadow: 0 3px 5px rgb(0 0 0 / 0.2);
   background:#FFFFFF;
   padding: 30px 10px;
+    ${mobile({ height: "362px" })}
 `;
 
 const Image = styled.img`
   width: 100%;
   height: 300px;
   object-fit: cover;
-  ${mobile({ height: "20vh" })}
+  ${mobile({ height: "30vh" })}
 
 `;
 
@@ -43,11 +44,14 @@ const Title = styled.h1`
     color:white;
     font-weight:bold;
     margin-bottom: 20px;
+      ${mobile({ marginBottom: "170px" })}
 `;
 
 const Desc = styled.p`
     color:black;
      padding: 10px;
+           ${mobile({ padding: "30px 10px" })}
+
 `;
 
 const View = styled.button`
