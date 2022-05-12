@@ -9,7 +9,7 @@ import { logoutFunc } from "../redux/apiCalls";
 const Container = styled.div`
   height: 60px;
   // background:red;
-  ${mobile({ height: "50px" })}
+  ${mobile({ height: "60px" })}
 `;
 
 const Wrapper = styled.div`
@@ -17,7 +17,7 @@ const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  ${mobile({ padding: "10px 0px" })}
+  ${mobile({ padding: "10px 5px" })}
 `;
 
 const Left = styled.div`
@@ -35,10 +35,8 @@ const Center = styled.div`
 const Logo = styled.h1`
   font-weight: bold;
   color: black;
-  ${mobile({ fontSize: "24px" })}
+  ${mobile({ fontSize: "18px" })}
 `;
-
-
 
 const Right = styled.div`
   flex: 1;
@@ -53,7 +51,15 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 25px;
   font-weight:400;
-  ${mobile({ fontSize: "12px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "11px", marginLeft: "6px" })}
+`;
+const MenuItemM = styled.div`
+  font-size: 14px;
+  cursor: pointer;
+  margin-left: 25px;
+  font-weight:400;
+  display:initial;
+  ${mobile({ fontSize: "12px", marginLeft: "5px", display:"none" })}
 `;
 const UserItem = styled.div`
   font-size: 20px;
@@ -61,7 +67,7 @@ const UserItem = styled.div`
   color: teal;
   cursor: pointer;
   margin-left: 25px;
-  ${mobile({ fontSize: "14px", marginLeft: "10px" })}
+  ${mobile({ fontSize: "12px", marginLeft: "2px" })}
 `;
 
 const Button = styled.button`
@@ -89,20 +95,8 @@ const Button2 = styled.button`
   &:hover{
       background-color: teal;
   }
-`;
+      ${mobile({ fontSize: "12px", padding:"10px" })}
 
-const Createpost = styled.button`
-  padding: 10px 25px;
-  border: 1px solid white;
-  background-color: blue;
-  border-radius:5px;
-  cursor: pointer;
-  font-weight: 500;
-  color:white;
-  margin-right: 5px;
-  &:hover{
-      background-color: lightblue;
-  }
 `;
 
 const Logout = styled.button`
@@ -117,6 +111,8 @@ const Logout = styled.button`
   &:hover{
       background-color: brown;
   }
+    ${mobile({ fontSize: "12px", padding:"10px" })}
+
 `;
 
 
@@ -142,10 +138,8 @@ const Navbar = () => {
 
                 <Center>
                     <MenuItem><Link to={"/"}>Home</Link></MenuItem>
-                    <MenuItem>About Us</MenuItem>
-                    <MenuItem>Service</MenuItem>
-                    <MenuItem> <Link to={"/cars"}>Car Lists</Link></MenuItem>
-                    <MenuItem> <Link to={"/create"}>Create Car Post</Link></MenuItem>
+                    <MenuItemM> <Link to={"/cars"}>Car Lists</Link></MenuItemM>
+                    <MenuItem> <Link to={"/create"}>Create Post</Link></MenuItem>
                 </Center>
 
                 <Right>
@@ -155,7 +149,7 @@ const Navbar = () => {
                     {
                         user
                             ?
-                            <UserItem>{user.data.last_name} {"  "} {user.data.first_name}</UserItem>
+                            <UserItem>{user.data.username} </UserItem>
                             :
                             <>
                                 <Link to={"/register"}>
