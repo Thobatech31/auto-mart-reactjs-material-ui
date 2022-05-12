@@ -23,6 +23,8 @@ const Header = styled.h1`
 const CreateDiv = styled.div`
     text-align: right;
     padding:0 25px;
+      ${mobile({ margin: "20px 0" })}
+
 `;
 
 const Button = styled.button`
@@ -64,7 +66,6 @@ const Cars = () => {
 
   return (
       <div>
-
           <CreateDiv>
               <Link to={"/cars"}>
                   <ButtonAll>View All Cars</ButtonAll>

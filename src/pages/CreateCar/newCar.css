@@ -4,57 +4,71 @@
   justify-content: space-evenly;
   /*margin-left: 100px;*/
 }
+@media only screen and (max-width: 422px) {
+  .newCar {
+    display: block;
+    padding: 0 25px;
+  }
+
+  .previewDiv{
+    display: none;
+  }
+
+  .addCarItem {
+    width: 100% !important;
+  }
+}
 
 .addCarForm {
-  margin-top: 10px;
+margin-top: 10px;
 }
 
 .addCarItem {
-  width: 250px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
+width: 250px;
+display: flex;
+flex-direction: column;
+margin-bottom: 10px;
 }
 
 .addCarItem > label {
-  color: gray;
-  font-weight: 600;
-  margin-bottom: 10px;
+color: gray;
+font-weight: 600;
+margin-bottom: 10px;
 }
 
 .addCarItem > input {
-  padding: 10px;
+padding: 10px;
 }
 
 .addCarButton {
-  margin-top: 10px;
-  padding: 15px 25px;
-  border: none;
-  border-radius: 10px;
-  background-color: teal;
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  width: 100%;
+margin-top: 10px;
+padding: 15px 25px;
+border: none;
+border-radius: 10px;
+background-color: teal;
+color: white;
+font-weight: 600;
+cursor: pointer;
+width: 100%;
 }
 
 .previewDiv{
-  margin-top: 100px;
-  height: 500px;
-  width: 25%;
-  border-radius: 5px;
-  border: 1px solid teal;
+margin-top: 100px;
+height: 500px;
+width: 25%;
+border-radius: 5px;
+border: 1px solid teal;
 }
 
 .previewDiv img{
-  height: 500px;
-  width: 100%;
-  object-fit: cover;
+height: 500px;
+width: 100%;
+object-fit: cover;
 }
 
 a {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: none;
-  color: black;
+color: -webkit-link;
+cursor: pointer;
+text-decoration: none;
+color: black;
 }
